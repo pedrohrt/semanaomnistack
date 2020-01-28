@@ -3,9 +3,12 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const http = require('http');
 const routes = require('./routes');
+const { setupWebSocket } = require('./websocket')
 
 const app = express(); 
-const server = http.Server(app);
+const server = http.Server(app); 
+
+setupWebSocket(server);
 
 mongoose.connect('mongodb+srv://pedrhrt:1q21q21q2@cluster0-jgwyq.mongodb.net/test', {
   useNewUrlParser: true,
