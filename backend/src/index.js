@@ -1,16 +1,20 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
+const http = require('http');
 const routes = require('./routes');
 
-const app = express();
+const app = express(); 
+const server = http.Server(app);
 
-mongoose.connect('mongodb+srv://pedrohrt:1q21q21q2@cluster0-myhxn.mongodb.net/week10?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://pedrhrt:1q21q21q2@cluster0-jgwyq.mongodb.net/test', {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
 
 });
 
+app.use(cors());
 app.use(express.json());
 app.use(routes);
 
-app.listen(4444);
+server.listen(4444);
